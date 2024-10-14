@@ -9,3 +9,4 @@ whitenoise
 gunicorn
 uvicorn
 requests
+Pillow
