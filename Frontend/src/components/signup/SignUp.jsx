@@ -38,7 +38,7 @@ const SignUp = () => {
       setSuccess('Registration successful!');
       setError('');
       // Redirect to verify-email page after successful registration
-      navigate('/verify-email/');
+      navigate('/verify-email');
 
 
     } catch (err) {

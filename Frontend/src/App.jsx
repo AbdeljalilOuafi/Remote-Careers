@@ -6,7 +6,7 @@ import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import JobListPage from "./pages/JobListPage";
 import Home from "./pages/Home";
-import SignUp from "./components/signup/signUp";
+import SignUp from "./components/signup/SignUp";
 import Login from "./components/login/Login";
 import ConfEmail from "./components/confimEmail/ConfEmail";
 

@@ -1,12 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa6';
 import { LiaTimesSolid } from 'react-icons/lia';
 import { Link } from 'react-router-dom';
-import { GiPortal } from "react-icons/gi";
 import logo from '../../assete/logo/logo_remote_careers-removebg-preview.png'
+import axiosInstance from '../../axios/axios'
 
 
 const Navbar = () => {
+    const navigate = useNavigate();
     const [open, setOpen] = React.useState(false);
 
     const navLinks = [
@@ -23,6 +25,20 @@ const Navbar = () => {
     const handleClose = () => {
         setOpen(false);
     };
+
+    const handleLogout = async () => {
+        try {
+          const refreshToken = localStorage.getItem('refresh_token');
+          if (refreshToken) {
+            await axiosInstance.post('/auth/logout/', { refresh_token: refreshToken });
+            localStorage.removeItem('access_token');
+            localStorage.removeItem('refresh_token');
+            navigate('/login');
+          }
+        } catch (error) {
+          console.error('Error during logout:', error);
+        }
+      };
 
     return (
         <>
@@ -61,6 +77,11 @@ const Navbar = () => {
                             Sign Up
                         </button>                        
                         </Link>
+                        
+                        <button onClick={handleLogout} className="w-fit px-6 py-2 rounded-full bg-primary hover:bg-hover ease-in-out duration-300">
+                            Lgout
+                        </button>                        
+                        
                     </div>
                 </div>
             </nav>

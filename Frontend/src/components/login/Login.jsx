@@ -28,7 +28,7 @@ const Login = () => {
     
       if (access_token && refresh_token) {
         // Save the access_token in the Authorization header
-        console.log(access_token)
+        // console.log(access_token)
         // axiosInstance.defaults.headers.common['Authorization'] = null;
         axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
     
