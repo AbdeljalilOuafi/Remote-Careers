@@ -8,3 +8,4 @@ dj-database-url
 whitenoise
 gunicorn
 uvicorn
+requests
