@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { FaRegHeart, FaHeart } from 'react-icons/fa';
 import Modal from './Modal';
 
-const JobList = ({ jobs }) => {
+const JobList = ({ jobs, savedJobs, onToggleSaveJob }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedJob, setSelectedJob] = useState(null);
 
@@ -21,12 +22,22 @@ const JobList = ({ jobs }) => {
                 <div key={index} className="border p-4 rounded shadow">
                     <h2 className="text-xl font-bold">{job.title || 'Unnamed Job'}</h2>
                     {job.company.logo && <img src={job.company.logo} alt={`${job.company.name} logo`} className="w-16 h-16 object-contain" />}
+                    
+                    {/* Save/Unsaved Job Icon */}
+                    <button 
+                        onClick={() => onToggleSaveJob(job)} 
+                        className="mt-2 text-red-500"
+                    >
+                        {savedJobs.some(savedJob => savedJob.id === job.id) ? <FaHeart /> : <FaRegHeart />}
+                    </button>
+
                     <button 
                         onClick={() => handleViewJob(job)} 
                         className="mt-2 px-4 py-2 bg-blue-500 text-white rounded"
                     >
                         View Job
                     </button>
+                    
                     {job.staffCountRange && <p><strong>Staff Count Range:</strong> {job.staffCountRange}</p>}
                     {job.headquarter && <p><strong>Headquarters:</strong> {job.headquarter}</p>}
                 </div>

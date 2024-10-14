@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Layout from "./components/layout/Layout";
@@ -9,11 +9,12 @@ import Home from "./pages/Home";
 import SignUp from "./components/signup/SignUp";
 import Login from "./components/login/Login";
 import ConfEmail from "./components/confimEmail/ConfEmail";
+import SavedJobs from './pages/SavedJobs';
 
 // Create a new instance of QueryClient
 const queryClient = new QueryClient();
 
-// component that wraps Layout with Navbar and Footer
+// Component that wraps Layout with Navbar and Footer
 const LayoutWithNavFooter = ({ children }) => (
   <>
     <Navbar />
@@ -22,7 +23,7 @@ const LayoutWithNavFooter = ({ children }) => (
   </>
 );
 
-const AppContent = () => {
+const AppContent = ({ savedJobs, setSavedJobs }) => {
   const location = useLocation();
   const isAuthPage = ['/signUp', '/login', '/verify-email'].includes(location.pathname);
 
@@ -39,8 +40,9 @@ const AppContent = () => {
       ) : (
         <LayoutWithNavFooter>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/jobs" element={<JobListPage />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/jobs" element={<JobListPage savedJobs={savedJobs} setSavedJobs={setSavedJobs} />} />
+              <Route path="/saved-jobs" element={<SavedJobs savedJobs={savedJobs} />} />
           </Routes>
         </LayoutWithNavFooter>
       )}
@@ -49,10 +51,12 @@ const AppContent = () => {
 };
 
 function App() {
+  const [savedJobs, setSavedJobs] = useState([]); // Manage saved jobs state here
+
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
-        <AppContent />
+        <AppContent savedJobs={savedJobs} setSavedJobs={setSavedJobs} /> {/* Pass state and setter */}
       </Router>
     </QueryClientProvider>
   );

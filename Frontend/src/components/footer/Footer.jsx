@@ -7,7 +7,7 @@ import logo from '../../assete/logo/logo_remote_careers-removebg-preview.png'
 
 const Footer = () => {
     return (
-        <footer className='w-full py-7 bg-neutral-200/50'>
+        <footer className='w-full lg:px-32 md:px-16 sm:px-7 px-4 py-7 bg-neutral-200/50'>
             <Layout className='w-full space-y-10'>
                 <div className="grid md:grid-cols-5 grid-cols-2 gap-10">
                     <div className="col-span-2 space-y-4">

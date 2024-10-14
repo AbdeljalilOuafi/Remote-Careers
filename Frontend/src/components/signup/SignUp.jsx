@@ -66,10 +66,10 @@ const SignUp = () => {
 
   return (
     // start bg img container
-    <div className=" flex justify-center items-center min-h-screen bg-gradient-to-b from-blue-700 via-blue-800 to-gray-900 ">
+    <div className=" w-full h-screen flex justify-center items-center min-h-screen bg-gradient-to-b from-blue-700 via-blue-800 to-gray-900 ">
       {/* start login container */}
       <div>
-        <div className="bg-blue-100 border border-slale-400 rounded-[64px] p-16 shadow-lg backdrop-filter backdrop-blur-sm bg-opacity-80 relative ">
+        <div className="bg-blue-100 border border-slale-400 rounded-[64px] p-20 shadow-lg backdrop-filter backdrop-blur-sm bg-opacity-80 relative ">
           <h2 className="text-4xl font-bold text-center text-primary mb-16">Create An Account!</h2>
 
 

@@ -3,9 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa6';
 import { LiaTimesSolid } from 'react-icons/lia';
 import { Link } from 'react-router-dom';
-import logo from '../../assete/logo/logo_remote_careers-removebg-preview.png'
-import axiosInstance from '../../axios/axios'
-
+import logo from '../../assete/logo/logo_remote_careers-removebg-preview.png';
+import axiosInstance from '../../axios/axios';
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -28,17 +27,20 @@ const Navbar = () => {
 
     const handleLogout = async () => {
         try {
-          const refreshToken = localStorage.getItem('refresh_token');
-          if (refreshToken) {
-            await axiosInstance.post('/auth/logout/', { refresh_token: refreshToken });
-            localStorage.removeItem('access_token');
-            localStorage.removeItem('refresh_token');
-            navigate('/login');
-          }
+            const refreshToken = localStorage.getItem('refresh_token');
+            if (refreshToken) {
+                await axiosInstance.post('/auth/logout/', { refresh_token: refreshToken });
+                localStorage.removeItem('access_token');
+                localStorage.removeItem('refresh_token');
+                navigate('/login');
+            }
         } catch (error) {
-          console.error('Error during logout:', error);
+            console.error('Error during logout:', error);
         }
-      };
+    };
+
+    // Check if user is logged in
+    const isLoggedIn = !!localStorage.getItem('access_token');
 
     return (
         <>
@@ -46,7 +48,7 @@ const Navbar = () => {
                 {/* Logo Section */}
                 <Link to="/" className='text-2xl text-hover font-bold mr-16 flex items-center'>
                     <img className='w-40 cursor-pointer block hover:opacity-85'
-                    src={logo} alt="logo" />
+                        src={logo} alt="logo" />
                 </Link>
 
                 {/* Toggle button */}
@@ -72,16 +74,24 @@ const Navbar = () => {
                     </ul>
 
                     <div className='flex md:items-center sm:items-start items-start gap-x-5 gap-y-2 flex-wrap md:flex-row sm:flex-col flex-col text-base font-medium text-neutral-50'>
-                        <Link to='/signUp'>
-                        <button className="w-fit px-6 py-2 rounded-full bg-primary hover:bg-hover ease-in-out duration-300">
-                            Sign Up
-                        </button>                        
-                        </Link>
-                        
-                        <button onClick={handleLogout} className="w-fit px-6 py-2 rounded-full bg-primary hover:bg-hover ease-in-out duration-300">
-                            Lgout
-                        </button>                        
-                        
+                        {!isLoggedIn ? (
+                            <>
+                                <Link to='/signUp'>
+                                    <button className="w-fit px-6 py-2 rounded-full bg-primary hover:bg-hover ease-in-out duration-300">
+                                        Sign Up
+                                    </button>
+                                </Link>
+                                <Link to='/login'>
+                                    <button className="w-fit px-6 py-2 rounded-full bg-primary hover:bg-hover ease-in-out duration-300">
+                                        Log In
+                                    </button>
+                                </Link>
+                            </>
+                        ) : (
+                            <button onClick={handleLogout} className="w-fit px-6 py-2 rounded-full bg-primary hover:bg-hover ease-in-out duration-300">
+                                Logout
+                            </button>
+                        )}
                     </div>
                 </div>
             </nav>

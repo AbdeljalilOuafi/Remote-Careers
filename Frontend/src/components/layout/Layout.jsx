@@ -11,7 +11,7 @@ const Layout = ({ children, className }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className={`w-full h-auto flex flex-col lg:px-32 md:px-16 sm:px-7 px-4 ${className}`}
+            className={`w-full h-auto flex flex-col  ${className}`}
         >
             {children}
         </motion.div>
