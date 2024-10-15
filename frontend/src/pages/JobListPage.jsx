@@ -8,6 +8,7 @@ import axiosInstance from '../axios/axios';
 const fetchJobs = async (keywords, location) => {
     const options = {
         method: 'GET',
+        // this
         url: '/jobs/',
         params: {
             keywords: keywords || 'react',

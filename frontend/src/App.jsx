@@ -56,7 +56,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
-        <AppContent savedJobs={savedJobs} setSavedJobs={setSavedJobs} /> {/* Pass state and setter */}
+        <AppContent savedJobs={savedJobs} setSavedJobs={setSavedJobs} /> 
       </Router>
     </QueryClientProvider>
   );
