@@ -7,12 +7,14 @@ ALLOWED_HOSTS = [
     os.environ.get('RENDER_EXTERNAL_HOSTNAME'),
     'remotecareers.tech',
     'www.remotecareers.tech',
+    'api.remotecareers.tech',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://' + os.environ.get('RENDER_EXTERNAL_HOSTNAME'),
     'https://remotecareers.tech',
     'https://www.remotecareers.tech',
+    'https://api.remotecareers.tech',
 ]
 
 DEBUG = False
@@ -33,6 +35,7 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     'https://remotecareers.tech',
     'https://www.remotecareers.tech',
+    'https://api.remotecareers.tech'
 ]
 
 STORAGES = {

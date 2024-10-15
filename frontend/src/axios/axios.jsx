@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // Create an instance of Axios with a custom configuration
 const axiosInstance = axios.create({
-    baseURL: 'https://www.remotecareers.tech/api', // Set to the root URL
+    baseURL: 'https://api.remotecareers.tech/api', // Set to the root URL
     timeout: 10000, // Optional: set a timeout for requests
     headers: {
         'Content-Type': 'application/json',
