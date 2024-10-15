@@ -3,8 +3,17 @@ import dj_database_url
 from .settings import *
 from .settings import BASE_DIR
 
-ALLOWED_HOSTS = [os.environ.get('RENDER_EXTERNAL_HOSTNAME')]
-CSRF_TRUSTED_ORIGINS = ['https://'+os.environ.get('RENDER_EXTERNAL_HOSTNAME')]
+ALLOWED_HOSTS = [
+    os.environ.get('RENDER_EXTERNAL_HOSTNAME'),
+    'remotecareers.tech',
+    'www.remotecareers.tech',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://' + os.environ.get('RENDER_EXTERNAL_HOSTNAME'),
+    'https://remotecareers.tech',
+    'https://www.remotecareers.tech',
+]
 
 DEBUG = False
 SECRET_KEY = os.environ.get('SECRET_KEY')
@@ -22,7 +31,8 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    # 'https://render-deploy-tutorial-reactjs-code.onrender.com'
+    'https://remotecareers.tech',
+    'https://www.remotecareers.tech',
 ]
 
 STORAGES = {
