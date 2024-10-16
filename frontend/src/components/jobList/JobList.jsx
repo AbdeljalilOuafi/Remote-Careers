@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaRegHeart, FaHeart } from 'react-icons/fa';
-import Modal from './Modal';
+import Modal from '../model/Modal';
 
 const JobList = ({ jobs, savedJobs, onToggleSaveJob }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);

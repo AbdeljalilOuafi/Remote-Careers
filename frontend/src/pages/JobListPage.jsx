@@ -1,23 +1,23 @@
-// src/pages/JobListPage.jsx
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import JobList from '../components/JobList';
-import Filter from '../components/Filter';
+import JobList from '../components/jobList/JobList';
+import Filter from '../components/filter/Filter';
 import axiosInstance from '../axios/axios';
 
 const fetchJobs = async (keywords, location) => {
     const options = {
         method: 'GET',
-        // this
+        // url: '/search-jobs',
         url: '/jobs/',
         params: {
-            keywords: keywords || 'react',
+            keywords: keywords || 'software engineering ',
             datePosted: 'anyTime',
             onsiteRemote: 'remote',
             sort: 'mostRecent',
             location: location || ''
         }
     };
+    console.log('Fetching jobs with keyword:', options.params.keywords);
 
     try {
         const response = await axiosInstance.request(options);
@@ -45,15 +45,12 @@ const JobListPage = ({ savedJobs, setSavedJobs }) => {
     console.log('Fetched jobs:', jobs);
 
     const handleToggleSaveJob = (job) => {
-        // Check if the job is already saved
         if (savedJobs.some(savedJob => savedJob.id === job.id)) {
-            // Remove job from saved jobs
             setSavedJobs(savedJobs.filter(savedJob => savedJob.id !== job.id));
-            alert('Job unsaved successfully!'); // Optional feedback to user
+            alert('Job unsaved successfully!');
         } else {
-            // Save the job
             setSavedJobs([...savedJobs, job]);
-            alert('Job saved successfully!'); // Optional feedback to user
+            alert('Job saved successfully!');
         }
     };
 
