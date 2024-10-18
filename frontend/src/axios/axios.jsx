@@ -9,7 +9,6 @@ const axiosInstance = axios.create({
     timeout: 10000, // Optional: set a timeout for requests
     headers: {
         'Content-Type': 'application/json',
-        // this
         'x-rapidapi-key': '26c47ff7bbmsh20045f047178745p1f4642jsna6fcb588c3e8', // Move API key here
         'x-rapidapi-host': 'linkedin-data-api.p.rapidapi.com' // Move host here
     },
