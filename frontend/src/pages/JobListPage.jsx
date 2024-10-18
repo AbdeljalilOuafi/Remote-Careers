@@ -7,7 +7,7 @@ import axiosInstance from '../axios/axios';
 const fetchJobs = async (keywords, location) => {
     const options = {
         method: 'GET',
-        url: '/search-jobs-v2',
+        url: '/search-jobs',
         // url: '/jobs/',
         params: {
             keywords: keywords || 'software engineering ',
